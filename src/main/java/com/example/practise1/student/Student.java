@@ -1,13 +1,36 @@
 package com.example.practise1.student;
 
-import java.time.LocalDate;
+import org.springframework.data.annotation.Id;
 
+import javax.persistence.*;
+import java.lang.reflect.Constructor;
+import java.time.LocalDate;
+@Entity
+@Table
 public class Student {
+    @javax.persistence.Id
+    @Id
+//    @SequenceGenerators(
+//            name = "student_sequence",
+//            sequenceName = "student_sequence",
+//            allocationSize = 1
+//
+//    )
+//    @GeneratedValue(
+//            strategy = GenerationType.SEQUENCE,
+//            generator = "student_sequence"
+//    )
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
+
     private long id;
     private String name;
     private  String email;
     private LocalDate dob;
     private Integer age;
+
+    public Student() {
+    }
 
     public Student(long id, String name, String email, LocalDate dob, Integer age) {
         this.id = id;
@@ -24,6 +47,7 @@ public class Student {
         this.age = age;
     }
 
+    @GeneratedValue
     public long getId() {
         return id;
     }
@@ -74,4 +98,8 @@ public class Student {
                 ", age=" + age +
                 '}';
     }
+
+
+
+
 }
